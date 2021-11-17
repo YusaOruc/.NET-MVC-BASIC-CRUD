@@ -1,0 +1,43 @@
+﻿@using MvcStok.Models.Entity
+@model List<TBLSATISLAR>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table id="tbl4" class="table table-bordered">
+    <thead>
+        <tr>
+            <th width="100">Satış ID</th>
+            <th width="770">Ürün ADI</th>
+            <th width="770">Muşteri Adı Soyadı</th>
+            <th width="770">Adet</th>
+            <th width="770">Fiyat</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ktgr in Model)
+        {
+            <tr>
+                <td align="center">@ktgr.SATISID</td>
+                <td>@ktgr.URUN</td>
+                <td>@ktgr.MUSTERI</td>
+                <td>@ktgr.ADET</td>
+                <td>@ktgr.FIYAT</td>
+                <td><a href="/Satis/SatisSil/@ktgr.SATISID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/Satis/SatisGetir/@ktgr.SATISID" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<td><a href="/Satis/YeniSatis/" class="btn btn-primary">YENİ KATEGORİ EKLE</a></td>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+<script>
+    $('#tbl4').DataTable();
+</script>

@@ -1,0 +1,42 @@
+﻿@using MvcStok.Models.Entity
+@model List<TBLMUSTERILER>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+<table id="tbl2" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>MÜŞTERİ ID</th>
+            <th>MÜŞTERİ ADI</th>
+            <th>MÜŞTERİ SOYADI</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ktgr in Model)
+        {
+            <tr>
+                <td width="100" align="center">@ktgr.MUSTERIID </td>
+                <td>@ktgr.MUSTERIAD </td>
+                <td>@ktgr.MUSTERISOYAD</td>
+                <td width="50"><a href="/Musteri/SIL/@ktgr.MUSTERIID" class="btn btn-danger">SİL</a></td>
+                <td width="100"><a href="/Musteri/MusteriGetir/@ktgr.MUSTERIID" class="btn btn-success">GÜNCELLE</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<td><a href="/Musteri/YeniMusteri/" class="btn btn-primary">YENİ MÜŞTERİ EKLE</a></td>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+<script>
+    $('#tbl2').DataTable();
+</script>
